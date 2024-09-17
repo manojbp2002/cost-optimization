@@ -1,0 +1,22 @@
+{
+    "Version": "2012-10-17", 
+    // The version of the policy language. The date indicates the format version used for the policy syntax.
+    "Statement": [
+        {
+            "Effect": "Allow", 
+            // The effect specifies what the policy should do. "Allow" means it permits the actions listed below.
+            "Action": [
+                "ec2:DescribeSnapshots", 
+                // Permission to retrieve EBS snapshot details, including metadata about all snapshots owned by the AWS account.
+                "ec2:DescribeInstances", 
+                // Permission to retrieve the status and metadata of all EC2 instances (to check if they are running or stopped).
+                "ec2:DescribeVolumes", 
+                // Permission to retrieve information about EBS volumes (to check if snapshots are attached to existing volumes).
+                "ec2:DeleteSnapshot" 
+                // Permission to delete EBS snapshots (used to remove snapshots that are not attached to any volumes).
+            ],
+            "Resource": "*"
+            // Applies the actions to all EC2 resources in the account. You could restrict this by specifying particular resources, but "*" means all.
+        }
+    ]
+}
